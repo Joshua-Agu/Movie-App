@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">benVies</string>
+    <string name="search_movie">search movie</string>
+    <string name="movies">movies</string>
+    <string name="enter_movie_name">enter movie name</string>
+    <string name="trending_movies">trending movies</string>
+    <string name="enter_movie_namee">Enter Movie Name</string>
+    <string name="login">LOGIN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">forgot Password?</string>
+    <string name="don_t_have_an_account">Don\'t have An Account?</string>
+    <string name="register_now">REGISTER NOW</string>
+    <string name="name">NAME</string>
+    <string name="search_movie_">Search Movie...</string>
+    <string name="trending_movies_">Trending Movies</string>
+    <string name="category">Category</string>
+    <string name="explorer">Explorer</string>
+    <string name="namee">NAME</string>
+    <string name="genre">Genre</string>
+</resources>
