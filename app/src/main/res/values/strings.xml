@@ -18,4 +18,5 @@
     <string name="explorer">Explorer</string>
     <string name="namee">NAME</string>
     <string name="genre">Genre</string>
+    <string name="slider_movie_posters">Slider Movie Posters</string>
 </resources>

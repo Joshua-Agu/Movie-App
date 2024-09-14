@@ -1,68 +1,82 @@
 package com.example.jhoehub.activities
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.jhoehub.R
+import com.example.jhoehub.VpDAta
+import com.example.jhoehub.adapter.VpAdapter
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var search: EditText
-    private lateinit var viewPager: ViewPager2
-    private lateinit var trending: TextView
-    private lateinit var trendingRecycle: RecyclerView
-    private lateinit var progressBar: ProgressBar
-    private lateinit var category: TextView
-    private lateinit var viewRecycle2: RecyclerView
-    private lateinit var progressBar2: ProgressBar
-    private lateinit var comingSoon: TextView
-    private lateinit var view3: RecyclerView
-    private lateinit var progressBar3: ProgressBar
-
+    private lateinit var viewPager2: ViewPager2
+    private val slideHandler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
-        search = findViewById(R.id.search)
-        viewPager = findViewById(R.id.viewpager)
-        trending = findViewById(R.id.Trending)
-        trendingRecycle = findViewById(R.id.trendingRecycle)
-        progressBar = findViewById(R.id.progressBar)
-        category = findViewById(R.id.Category)
-        viewRecycle2 = findViewById(R.id.VIEWrecycle2)
-        progressBar2 = findViewById(R.id.progressBar2)
-        comingSoon = findViewById(R.id.ComingSoon)
-        view3 = findViewById(R.id.VIEW3)
-        progressBar3 = findViewById(R.id.progressBar3)
-
+        initView()
+        banners()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
 
-        fun performSearch(query: String) {
-            // 1. Make an API call to fetch search results using Retrofit
-            // 2. Update the UI with the search results (e.g., update a RecyclerView adapter)
-            // 3. Consider showing a ProgressBar while searching and handling potential errors
         }
-        search.setOnClickListener {
-            val query = search.text.toString()
-            if (query.isNotBlank()) {
-                performSearch(query)
+    }
+
+    private fun banners() {
+        val vpDataList = mutableListOf<VpDAta>()
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp1))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp2))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp3))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp4))
+
+        viewPager2.setAdapter(VpAdapter(vpDataList, viewPager2))
+        viewPager2.clipToPadding = false
+        viewPager2.offscreenPageLimit = 4
+        viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
+
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(MarginPageTransformer(40))
+        compositePageTransformer.addTransformer { page, position ->
+            val r = 1 - kotlin.math.abs(position)
+            page.scaleX = 0.85f + r * 0.15f
+        }
+        viewPager2.setPageTransformer(compositePageTransformer)
+        viewPager2.currentItem = 1
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                slideHandler.removeCallbacks(sliderRunnable)
             }
-        }
+        })
+    }
 
+    private val sliderRunnable = Runnable {
+        viewPager2.currentItem += 1
+    }
 
+    override fun onPause() {
+        super.onPause()
+        slideHandler.removeCallbacks(sliderRunnable)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        slideHandler.postDelayed(sliderRunnable, 2500)
+    }
+
+    private fun initView() {
+        viewPager2 = findViewById(R.id.viewpager2)
     }
 }

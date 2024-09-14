@@ -1,16 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-
 }
 
 android {
     namespace = "com.example.jhoehub"
-     compileSdk = 34
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.jhoehub"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -21,13 +20,12 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
     compileOptions {
@@ -43,27 +41,26 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.room.runtime)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.hilt.android.v246)
-    kapt(libs.hilt.compiler)
-
+    // Networking and image loading
     implementation(libs.coil)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.picasso)
+    implementation("com.github.bumptech.glide:glide:4.15.1")
 
-    implementation(libs.kotlinx.coroutines.core)
+    // Coroutines and lifecycle
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.picasso)
-}
 
-fun kapt(compiler: Any) {
+    // ViewPager2
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation(libs.common)
 
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

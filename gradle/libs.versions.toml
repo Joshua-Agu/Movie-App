@@ -1,4 +1,5 @@
 [versions]
+androidx-viewpager2 = "1.1.0"
 agp = "8.5.2"
 coil = "2.4.0"
 hiltAndroid = "2.51.1"
@@ -18,8 +19,10 @@ constraintlayout = "2.1.4"
 picasso = "2.8"
 retrofit = "2.9.0"
 roomRuntime = "2.6.1"
+common = "0.10.0"
 
 [libraries]
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "androidx-viewpager2" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
@@ -41,6 +44,7 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
+common = { group = "com.google.ai.client.generativeai", name = "common", version.ref = "common" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
