@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="250dp"
+    android:scaleType="centerCrop"
+    android:id="@+id/vpImage"
+    android:adjustViewBounds="false"
+    android:hardwareAccelerated="false"
+    android:contentDescription="@string/slider_movie_posters"
+    >
+
+</ImageView>

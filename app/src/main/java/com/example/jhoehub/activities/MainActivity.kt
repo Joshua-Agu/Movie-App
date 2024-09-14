@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity() {
         vpDataList.add(VpDAta(drawableResId = R.drawable.vp2))
         vpDataList.add(VpDAta(drawableResId = R.drawable.vp3))
         vpDataList.add(VpDAta(drawableResId = R.drawable.vp4))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp5))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp6))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp7))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp8))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp9))
 
         viewPager2.setAdapter(VpAdapter(vpDataList, viewPager2))
         viewPager2.clipToPadding = false
