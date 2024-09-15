@@ -13,11 +13,19 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.jhoehub.R
 import com.example.jhoehub.VpDAta
+import com.example.jhoehub.adapter.MovieCategoriesAdapter
+import com.example.jhoehub.adapter.TrendingMoviesAdapter
+import com.example.jhoehub.adapter.UpcomingMoviesAdapter
 import com.example.jhoehub.adapter.VpAdapter
 
 
 class MainActivity : AppCompatActivity() {
-
+    private lateinit var adapterTrending: TrendingMoviesAdapter
+    private lateinit var adapterUpcoming: UpcomingMoviesAdapter
+    private lateinit var adapterCategory: MovieCategoriesAdapter
+    private lateinit var RecyclerViewTrending: RecyclerView
+    private lateinit var RecyclerViewUpcoming: RecyclerView
+    private lateinit var RecyclerViewCategory: RecyclerView
     private lateinit var viewPager2: ViewPager2
     private val slideHandler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,8 +44,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun banners() {
         val vpDataList = mutableListOf<VpDAta>()
-        vpDataList.add(VpDAta(drawableResId = R.drawable.vp1))
-        vpDataList.add(VpDAta(drawableResId = R.drawable.vp2))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp1a))
+        vpDataList.add(VpDAta(drawableResId = R.drawable.vp2a))
         vpDataList.add(VpDAta(drawableResId = R.drawable.vp3))
         vpDataList.add(VpDAta(drawableResId = R.drawable.vp4))
         vpDataList.add(VpDAta(drawableResId = R.drawable.vp5))
@@ -49,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         viewPager2.setAdapter(VpAdapter(vpDataList, viewPager2))
         viewPager2.clipToPadding = false
         viewPager2.offscreenPageLimit = 4
+        viewPager2.clipChildren = false
         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_ALWAYS
 
         val compositePageTransformer = CompositePageTransformer()
