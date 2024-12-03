@@ -3,33 +3,42 @@ package com.example.jhoehub.activities
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.jhoehub.R
 import com.example.jhoehub.VpDAta
-import com.example.jhoehub.adapter.MovieCategoriesAdapter
-import com.example.jhoehub.adapter.TrendingMoviesAdapter
-import com.example.jhoehub.adapter.UpcomingMoviesAdapter
+import com.example.jhoehub.adapter.AnimatedMoviesAdapter
+import com.example.jhoehub.adapter.BestMoviesAdapter
+import com.example.jhoehub.adapter.ComingSoonMoviesAdapter
 import com.example.jhoehub.adapter.VpAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var adapterTrending: TrendingMoviesAdapter
-    private lateinit var adapterUpcoming: UpcomingMoviesAdapter
-    private lateinit var adapterCategory: MovieCategoriesAdapter
-    private lateinit var RecyclerViewTrending: RecyclerView
-    private lateinit var RecyclerViewUpcoming: RecyclerView
-    private lateinit var RecyclerViewCategory: RecyclerView
     private lateinit var viewPager2: ViewPager2
+    private lateinit var Progressbar1 : ProgressBar
+    private lateinit var Progressbar2 : ProgressBar
+    private lateinit var Progressbar3 : ProgressBar
+    private lateinit var RecycleviewBestMovies : RecyclerView
+    private lateinit var RecycleviewAnimatedMovies  : RecyclerView
+    private lateinit var RecycleviewComingSoonMovies  : RecyclerView
+    private lateinit var adapterBestMovies: BestMoviesAdapter
+    private lateinit var adapterAnimatedMovies: AnimatedMoviesAdapter
+    private lateinit var adapterComingSoonMovies: ComingSoonMoviesAdapter
+
     private val slideHandler = Handler(Looper.getMainLooper())
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         initView()
@@ -92,5 +101,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         viewPager2 = findViewById(R.id.viewpager2)
+        Progressbar1 = findViewById(R.id.progressBar)
+        Progressbar2 = findViewById(R.id.progressBar2)
+        Progressbar3 = findViewById(R.id.progressBar3)
+        RecycleviewBestMovies = findViewById(R.id.trendingRecycle)
+        RecycleviewBestMovies.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        RecycleviewAnimatedMovies = findViewById(R.id.AnimatedRecycle)
+        RecycleviewAnimatedMovies.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        RecycleviewComingSoonMovies = findViewById(R.id.ComingSoonRecycle)
+        RecycleviewComingSoonMovies.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 }

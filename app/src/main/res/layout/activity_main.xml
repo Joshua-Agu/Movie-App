@@ -19,6 +19,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/benvies"
+                android:fontFamily="sans-serif-black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:padding="3dp"
+                app:drawableStartCompat="@drawable/benvies_tv"
+                android:drawablePadding="5dp"/>
+
             <EditText
                 android:id="@+id/search"
                 android:layout_width="match_parent"
@@ -95,13 +107,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/Category"
+                android:id="@+id/Animation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:text="@string/category"
+                android:text="Animation"
                 android:textColor="@color/navy"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -111,7 +123,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/VIEWrecycle2"
+                    android:id="@+id/AnimatedRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -128,9 +140,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/VIEWrecycle2"
-                    app:layout_constraintStart_toStartOf="@id/VIEWrecycle2"
-                    app:layout_constraintTop_toTopOf="@id/VIEWrecycle2" />
+                    app:layout_constraintEnd_toEndOf="@id/AnimatedRecycle"
+                    app:layout_constraintStart_toStartOf="@id/AnimatedRecycle"
+                    app:layout_constraintTop_toTopOf="@id/AnimatedRecycle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -141,7 +153,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="12dp"
-                android:text="Coming Soon..."
+
+                android:text="@string/coming_soon"
                 android:textColor="@color/navy"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -151,7 +164,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/VIEW3"
+                    android:id="@+id/ComingSoonRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipToPadding="false"
@@ -168,9 +181,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/VIEW3"
-                    app:layout_constraintStart_toStartOf="@id/VIEW3"
-                    app:layout_constraintTop_toTopOf="@id/VIEW3" />
+                    app:layout_constraintEnd_toEndOf="@id/ComingSoonRecycle"
+                    app:layout_constraintStart_toStartOf="@id/ComingSoonRecycle"
+                    app:layout_constraintTop_toTopOf="@id/ComingSoonRecycle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
